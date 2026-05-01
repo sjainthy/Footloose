@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Footloose | Step Into Style</title>
+  <meta name="description" content="Footloose is a modern footwear brand offering stylish, comfortable shoes for everyday movement." />
+  <style>
+    :root {
+      --bg: #fffaf3;
+      --text: #1f2933;
+      --muted: #6b7280;
+      --primary: #e85d04;
+      --primary-dark: #c2410c;
+      --accent: #ffd166;
+      --card: #ffffff;
+      --border: #f2dfce;
+      --shadow: 0 18px 45px rgba(31, 41, 51, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255, 250, 243, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .navbar {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.45rem;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+    }
+
+    .logo-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      display: grid;
+      place-items: center;
+      color: #ffffff;
+      font-weight: 900;
+      box-shadow: 0 10px 22px rgba(232, 93, 4, 0.28);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      font-weight: 700;
+      color: #4b5563;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px 20px;
+      border-radius: 999px;
+      background: var(--primary);
+      color: #ffffff;
+      font-weight: 800;
+      border: 0;
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 12px 24px rgba(232, 93, 4, 0.22);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      background: var(--primary-dark);
+      box-shadow: 0 16px 28px rgba(232, 93, 4, 0.28);
+    }
+
+    .btn.secondary {
+      background: #ffffff;
+      color: var(--primary);
+      border: 1px solid var(--border);
+      box-shadow: none;
+    }
+
+    .hero {
+      padding: 86px 0 72px;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.04fr 0.96fr;
+      align-items: center;
+      gap: 46px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: #fff0dc;
+      color: var(--primary-dark);
+      font-size: 0.92rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.7rem, 6vw, 5.6rem);
+      line-height: 0.96;
+      letter-spacing: -0.08em;
+      margin-bottom: 22px;
+    }
+
+    .hero h1 span {
+      color: var(--primary);
+    }
+
+    .hero p {
+      max-width: 610px;
+      color: var(--muted);
+      font-size: 1.15rem;
+      margin-bottom: 30px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 34px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      max-width: 580px;
+    }
+
+    .stat {
+      padding: 16px;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid var(--border);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.45rem;
+      color: var(--primary);
+      line-height: 1.1;
+    }
+
+    .stat small {
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .shoe-card {
+      position: relative;
+      min-height: 540px;
+      border-radius: 38px;
+      background: radial-gradient(circle at 30% 20%, #fff7d6, transparent 32%), linear-gradient(145deg, #fff, #ffe5c4);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      padding: 32px;
+    }
+
+    .shoe-visual {
+      position: absolute;
+      inset: 74px 30px auto auto;
+      width: 82%;
+      height: 270px;
+      border-radius: 70px 120px 80px 120px;
+      background: linear-gradient(135deg, #111827, #4b5563 52%, #f97316 53%, #ffd166);
+      transform: rotate(-16deg);
+      box-shadow: 0 38px 55px rgba(17, 24, 39, 0.24);
+    }
+
+    .shoe-visual::before {
+      content: "";
+      position: absolute;
+      left: 8%;
+      top: 36%;
+      width: 64%;
+      height: 18px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.86);
+      box-shadow: 0 35px 0 rgba(255, 255, 255, 0.75), 0 70px 0 rgba(255, 255, 255, 0.58);
+    }
+
+    .shoe-visual::after {
+      content: "";
+      position: absolute;
+      right: -3%;
+      bottom: 12%;
+      width: 34%;
+      height: 44px;
+      border-radius: 999px;
+      background: #111827;
+    }
+
+    .floating-tag {
+      position: absolute;
+      border-radius: 20px;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      box-shadow: 0 18px 35px rgba(31, 41, 51, 0.12);
+      padding: 16px 18px;
+      font-weight: 800;
+    }
+
+    .tag-1 {
+      left: 28px;
+      top: 40px;
+    }
+
+    .tag-2 {
+      right: 24px;
+      bottom: 34px;
+    }
+
+    .tag-3 {
+      left: 34px;
+      bottom: 120px;
+    }
+
+    section {
+      padding: 78px 0;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 34px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(2rem, 3.8vw, 3.4rem);
+      line-height: 1;
+      letter-spacing: -0.06em;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      max-width: 520px;
+      font-size: 1rem;
+    }
+
+    .collections {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .collection-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      overflow: hidden;
+      box-shadow: 0 14px 32px rgba(31, 41, 51, 0.08);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .collection-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow);
+    }
+
+    .collection-art {
+      min-height: 220px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #fff4dc, #ffd6a5);
+    }
+
+    .mini-shoe {
+      width: 72%;
+      height: 108px;
+      border-radius: 45px 70px 42px 78px;
+      transform: rotate(-13deg);
+      background: linear-gradient(135deg, #111827, #374151 60%, var(--primary) 61%, var(--accent));
+      box-shadow: 0 26px 35px rgba(31, 41, 51, 0.18);
+    }
+
+    .collection-body {
+      padding: 24px;
+    }
+
+    .collection-body h3 {
+      font-size: 1.35rem;
+      margin-bottom: 8px;
+    }
+
+    .collection-body p {
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .price-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 800;
+    }
+
+    .price-row span {
+      color: var(--primary);
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .feature {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 26px;
+      padding: 24px;
+    }
+
+    .feature-icon {
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      border-radius: 16px;
+      background: #fff0dc;
+      margin-bottom: 16px;
+      font-size: 1.35rem;
+    }
+
+    .feature h3 {
+      margin-bottom: 8px;
+      font-size: 1.12rem;
+    }
+
+    .feature p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .about-box {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 30px;
+      padding: 34px;
+      border-radius: 36px;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+
+    .about-art {
+      border-radius: 28px;
+      min-height: 360px;
+      background: linear-gradient(145deg, #111827, #374151);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-art::before,
+    .about-art::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+      background: var(--accent);
+      opacity: 0.9;
+    }
+
+    .about-art::before {
+      width: 240px;
+      height: 240px;
+      top: -60px;
+      right: -60px;
+    }
+
+    .about-art::after {
+      width: 180px;
+      height: 180px;
+      bottom: -40px;
+      left: -40px;
+      background: var(--primary);
+    }
+
+    .about-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 18px 8px;
+    }
+
+    .about-content h2 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1;
+      letter-spacing: -0.06em;
+      margin-bottom: 20px;
+    }
+
+    .about-content p {
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .newsletter {
+      border-radius: 36px;
+      background: linear-gradient(135deg, #111827, #374151);
+      color: #ffffff;
+      padding: 52px;
+      display: grid;
+      grid-template-columns: 1fr 0.9fr;
+      align-items: center;
+      gap: 24px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .newsletter::after {
+      content: "";
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      right: -80px;
+      top: -100px;
+      background: rgba(255, 209, 102, 0.25);
+    }
+
+    .newsletter h2 {
+      font-size: clamp(2rem, 4vw, 3.1rem);
+      line-height: 1;
+      letter-spacing: -0.06em;
+      margin-bottom: 14px;
+    }
+
+    .newsletter p {
+      color: #d1d5db;
+      max-width: 600px;
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 12px;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      position: relative;
+      z-index: 2;
+    }
+
+    .newsletter-form input {
+      flex: 1;
+      min-width: 0;
+      background: transparent;
+      border: 0;
+      color: #ffffff;
+      padding: 0 14px;
+      outline: none;
+      font-size: 1rem;
+    }
+
+    .newsletter-form input::placeholder {
+      color: #d1d5db;
+    }
+
+    footer {
+      padding: 38px 0;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+    }
+
+    .footer-grid {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 18px;
+      font-weight: 700;
+    }
+
+    @media (max-width: 900px) {
+      nav {
+        display: none;
+      }
+
+      .hero-grid,
+      .about-box,
+      .newsletter {
+        grid-template-columns: 1fr;
+      }
+
+      .shoe-card {
+        min-height: 430px;
+      }
+
+      .collections,
+      .features {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .section-head {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .hero {
+        padding-top: 54px;
+      }
+
+      .collections,
+      .features,
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .shoe-card {
+        min-height: 360px;
+        padding: 22px;
+      }
+
+      .shoe-visual {
+        width: 92%;
+        height: 190px;
+        top: 92px;
+        right: -10px;
+      }
+
+      .floating-tag {
+        padding: 12px 14px;
+        font-size: 0.9rem;
+      }
+
+      .tag-3 {
+        bottom: 78px;
+      }
+
+      .newsletter {
+        padding: 32px 22px;
+      }
+
+      .newsletter-form {
+        flex-direction: column;
+        border-radius: 24px;
+      }
+
+      .newsletter-form input {
+        padding: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container navbar">
+      <a href="#" class="logo" aria-label="Footloose home">
+        <span class="logo-mark">F</span>
+        <span>Footloose</span>
+      </a>
+
+      <nav aria-label="Main navigation">
+        <a href="#collections">Collections</a>
+        <a href="#features">Comfort</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <a class="btn" href="#collections">Shop Now</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">New Season Drop • Lightweight Comfort</div>
+          <h1>Step into <span>style</span> without slowing down.</h1>
+          <p>
+            Footloose brings modern footwear designed for movement, comfort, and everyday confidence. From workdays to weekends, find the pair that keeps pace with you.
+          </p>
+          <div class="hero-actions">
+            <a class="btn" href="#collections">Explore Collection</a>
+            <a class="btn secondary" href="#about">Our Story</a>
+          </div>
+          <div class="stats" aria-label="Brand highlights">
+            <div class="stat">
+              <strong>120+</strong>
+              <small>Fresh styles</small>
+            </div>
+            <div class="stat">
+              <strong>24/7</strong>
+              <small>All-day comfort</small>
+            </div>
+            <div class="stat">
+              <strong>4.9</strong>
+              <small>Customer rating</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="shoe-card" aria-label="Featured shoe illustration">
+          <div class="floating-tag tag-1">Cloud-soft sole</div>
+          <div class="shoe-visual"></div>
+          <div class="floating-tag tag-2">From ₹1,499</div>
+          <div class="floating-tag tag-3">Breathable fit</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="collections">
+      <div class="container">
+        <div class="section-head">
+          <h2>Featured collections</h2>
+          <p>Choose from everyday sneakers, smart casuals, and performance-ready pairs made for effortless movement.</p>
+        </div>
+
+        <div class="collections">
+          <article class="collection-card">
+            <div class="collection-art"><div class="mini-shoe"></div></div>
+            <div class="collection-body">
+              <h3>Urban Sneakers</h3>
+              <p>Clean, lightweight shoes for travel, college, office, and weekend plans.</p>
+              <div class="price-row"><span>₹1,499+</span><a href="#contact">Enquire</a></div>
+            </div>
+          </article>
+
+          <article class="collection-card">
+            <div class="collection-art"><div class="mini-shoe"></div></div>
+            <div class="collection-body">
+              <h3>Comfort Walkers</h3>
+              <p>Soft cushioning and stable grip for long days and regular walking.</p>
+              <div class="price-row"><span>₹1,899+</span><a href="#contact">Enquire</a></div>
+            </div>
+          </article>
+
+          <article class="collection-card">
+            <div class="collection-art"><div class="mini-shoe"></div></div>
+            <div class="collection-body">
+              <h3>Smart Casuals</h3>
+              <p>Polished designs that match denim, chinos, and semi-formal outfits.</p>
+              <div class="price-row"><span>₹2,199+</span><a href="#contact">Enquire</a></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="features">
+      <div class="container">
+        <div class="section-head">
+          <h2>Made for real life</h2>
+          <p>Every pair is designed to balance comfort, durability, and style so you can move freely wherever the day takes you.</p>
+        </div>
+
+        <div class="features">
+          <div class="feature">
+            <div class="feature-icon">👟</div>
+            <h3>Flexible Fit</h3>
+            <p>Soft upper materials support natural movement and easy wear.</p>
+          </div>
+          <div class="feature">
+            <div class="feature-icon">☁️</div>
+            <h3>Cushioned Sole</h3>
+            <p>Responsive padding helps reduce fatigue during long hours.</p>
+          </div>
+          <div class="feature">
+            <div class="feature-icon">🛡️</div>
+            <h3>Durable Build</h3>
+            <p>Reliable stitching and sturdy outsoles for daily use.</p>
+          </div>
+          <div class="feature">
+            <div class="feature-icon">✨</div>
+            <h3>Modern Style</h3>
+            <p>Minimal designs that pair easily with casual and smart outfits.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="about-box">
+          <div class="about-art" aria-hidden="true"></div>
+          <div class="about-content">
+            <h2>Footwear that feels as good as it looks.</h2>
+            <p>
+              Footloose was created for people who do not want to choose between comfort and style. Our designs are simple, practical, and made for everyday Indian lifestyles.
+            </p>
+            <p>
+              Whether you are heading to work, meeting friends, travelling, or taking a long walk, Footloose helps you stay comfortable and confident.
+            </p>
+            <a class="btn" href="#contact">Get in Touch</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="newsletter">
+          <div>
+            <h2>Join the Footloose list</h2>
+            <p>Get updates on new arrivals, offers, and fresh collections before everyone else.</p>
+          </div>
+          <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for joining Footloose!');">
+            <input type="email" placeholder="Enter your email" aria-label="Email address" required />
+            <button class="btn" type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <p>© 2026 Footloose. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="#">Instagram</a>
+        <a href="#">Facebook</a>
+        <a href="#">Support</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
